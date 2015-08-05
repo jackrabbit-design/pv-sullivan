@@ -91,7 +91,7 @@ function _hmCarousel(){
 function _trainingSlider(){
 	$('#training').slick({
 	  dots: true,
-	  fade: true,
+	  //fade: true,
 	  infinite: true,
 	  arrows:true,
 	  speed: 300,
