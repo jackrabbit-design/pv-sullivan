@@ -35,6 +35,12 @@ add_filter('login_errors',create_function('$a', "return null;"));
 /* Post Thumbnail Sizes */
 add_theme_support( 'post-thumbnails' );
 set_post_thumbnail_size( 64, 64, true );
+add_image_size( 'logo', 203, 130, true);
+add_image_size( 'banner-inner', 1634, 368, true);
+add_image_size( 'banner-inner-mobile', 768, 230, true);
+add_image_size( 'project-landing', 264, 200, true);
+add_image_size( 'side-image', 555, 9999, false);
+add_image_size( 'brand-logo', 125, 9999, false);
 //add_image_size( 'size-name', 100, 100, true);
 
 /* Declare Nav Menu Areas */
@@ -42,6 +48,7 @@ if ( function_exists( 'register_nav_menus' ) ) {
 	register_nav_menus(
 		array(
                'main-menu' => 'Main Menu',
+               'top-menu' => 'Top Menu',
                'footer-menu' => 'Footer Menu'
 		)
 	);
@@ -167,9 +174,13 @@ function form_submit_button($button, $form){
 /* ========================================================================= */
 
 if( function_exists('acf_add_options_page') ) {
-	acf_add_options_page(array(
-	    'page_title' => 'Options',
+	acf_add_options_sub_page(array(
+	    'page_title' => 'Global Options',
 	    'menu_slug' => 'options'
+	));
+	acf_add_options_sub_page(array(
+	    'page_title' => 'Social Media',
+	    'menu_slug' => 'social-media'
 	));
 }
 
