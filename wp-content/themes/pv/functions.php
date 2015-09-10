@@ -5,6 +5,7 @@
 /* ========================================================================= */
 
 include_once 'functions/functions-post-types.php';
+include_once 'functions/functions-multisite.php';
 //include_once 'functions/functions-widgets.php';
 //include_once 'functions/functions-comments.php';
 
@@ -42,6 +43,22 @@ add_image_size( 'project-landing', 264, 200, true);
 add_image_size( 'side-image', 555, 9999, false);
 add_image_size( 'brand-logo', 125, 9999, false);
 //add_image_size( 'size-name', 100, 100, true);
+add_image_size( 'banner-landing', 1800,700, true );
+add_image_size( 'sullivan-home-banner', 1140, 636, true);
+add_image_size( 'express-home-banner', 1140, 650, true );
+add_image_size( 'bathworks-home-banner', 1400, 700, true );
+add_image_size( 'manufacturer-logo', 200, 90, true );
+add_image_size( 'sullivan-site-ad', 312, 312, true);
+add_image_size( 'featured-content-thumb', 703, 703, true );
+add_image_size( 'call-to-action-banner-icon', 125, 125, true );
+add_image_size( 'two-column-module', 650, 453, true );
+add_image_size( 'slideshow-module', 1400, 700, true );
+add_image_size( 'location-banner', 1400, 700, true );
+add_image_size( 'location-map', 1098, 298, true );
+add_image_size( 'testimonial-thumb', 280, 115, true );
+add_image_size( 'express-get-started-bg', 1800, 1080, true );
+add_image_size( 'express-testimonial-bg', 1800, 442, true );
+add_image_size( 'interior-left-sidebar', 555, 396, true );
 
 /* Declare Nav Menu Areas */
 if ( function_exists( 'register_nav_menus' ) ) {
@@ -49,7 +66,8 @@ if ( function_exists( 'register_nav_menus' ) ) {
 		array(
                'main-menu' => 'Main Menu',
                'top-menu' => 'Top Menu',
-               'footer-menu' => 'Footer Menu'
+               'left-footer-menu' => 'Left Footer Menu',
+               'right-footer-menu' => 'Right Footer Menu'
 		)
 	);
 }
@@ -68,22 +86,22 @@ add_action( 'after_setup_theme', 'admin_font_setup' );
 function hide_meta_boxes() {
      remove_meta_box('postcustom','post','normal'); // custom fields post
      remove_meta_box('postcustom','page','normal'); // custom fields page
-     
+
      //remove_meta_box('commentstatusdiv','post','normal'); // discussion post
      remove_meta_box('commentstatusdiv','page','normal'); // discussion page
-     
+
      //remove_meta_box('commentsdiv','post','normal'); // comments post
      //remove_meta_box('commentsdiv','page','normal'); // comments page
 
      //remove_meta_box('authordiv','post','normal'); // author post
      remove_meta_box('authordiv','page','normal'); // author page
-     
+
      //remove_meta_box('revisionsdiv','post','normal'); // revisions post
      //remove_meta_box('revisionsdiv','page','normal'); // revisions page
-     
+
      //remove_meta_box('postimagediv','post','normal'); // featured image post
      remove_meta_box('postimagediv','page','normal'); // featured image page
-     
+
      //remove_meta_box('pageparentdiv','page','normal'); // page attributes
 
      //remove_meta_box('tagsdiv-post-tag','post','normal'); // post tags
@@ -115,6 +133,23 @@ function remove_dashboard_widgets() {
 
 add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
 
+/*------ Hide editor for appropriate pages & templates ---------*/
+function hide_editor() {
+  // Get the Post ID.
+  $post_id = @$_GET['post'] ? @$_GET['post'] : @$_POST['post_ID'] ;
+  if( !isset( $post_id ) ) return;
+  // Hide the editor for pages with various templates, where the_content() isn't used
+  $template_file = get_post_meta($post_id, '_wp_page_template', true);
+  if( $template_file == 'page-landing.php'
+        || $template_file == 'page-sullivan-landing.php'
+        || $template_file == 'page-express-landing.php'
+        || $template_file == 'page-bathworks-landing.php'
+      ){ // edit the template name
+    remove_post_type_support('page', 'editor');
+  }
+}
+add_action( 'admin_init', 'hide_editor' );
+
 
 /* ========================================================================= */
 /* !CUSTOM LOGIN STYLES */
@@ -136,21 +171,25 @@ add_action( 'login_footer', 'jrd_login' );
 /* ========================================================================= */
 /* !ENQUEUE SCRIPTS */
 /* ========================================================================= */
-     
+
 function enqueue_scripts() {
     wp_deregister_script( 'jquery' );
     wp_enqueue_script('modernizr', get_bloginfo('url').'/ui/js/modernizr.js', array(), null);
     wp_enqueue_script('jquery', get_bloginfo('url').'/ui/js/jquery.js', array(), null);
-    wp_enqueue_script('plugins', get_bloginfo('url').'/ui/js/jquery.plugins.js', array('jquery'), null, true);
-    wp_enqueue_script('init', get_bloginfo('url').'/ui/js/jquery.init.js', array('jquery', 'plugins'), null, true);
+    wp_enqueue_script('plugins', get_bloginfo('url').'/ui/js/jquery.plugins.js', array('jquery'), null, false);
+    wp_enqueue_script('pv_init', get_bloginfo('url').'/ui/js/jquery.init.js', array('jquery', 'plugins'), null, false);
+
+    if (is_page_template('page-locations.php')){
+      wp_enqueue_script('maps','https://maps.googleapis.com/maps/api/js', null, null, true);
+    }
 }
 add_action('wp_enqueue_scripts', 'enqueue_scripts');
-    
-    
+
+
 /* ========================================================================= */
 /* !ENQUEUE STYLES */
 /* ========================================================================= */
-    
+
 function enqueue_styles() {
     wp_enqueue_style('style', get_bloginfo('url').'/ui/css/style.css', array(), null);
 }
@@ -174,14 +213,23 @@ function form_submit_button($button, $form){
 /* ========================================================================= */
 
 if( function_exists('acf_add_options_page') ) {
-	acf_add_options_sub_page(array(
-	    'page_title' => 'Global Options',
-	    'menu_slug' => 'options'
-	));
-	acf_add_options_sub_page(array(
-	    'page_title' => 'Social Media',
-	    'menu_slug' => 'social-media'
-	));
+  acf_add_options_sub_page(array(
+    'page_title' => 'Website Options',
+    'menu_slug' =>' website-options'
+  ));
+
+  if (get_current_blog_id()==get_site_id()){ // main site
+
+    acf_add_options_sub_page(array(
+        'page_title' => 'Global Options',
+        'menu_slug' => 'options'
+    ));
+    acf_add_options_sub_page(array(
+        'page_title' => 'Social Media',
+        'menu_slug' => 'social-media'
+    ));
+  }
+
 }
 
 /* ========================================================================= */
@@ -208,11 +256,11 @@ function check_is_subpage() {
 }
 
 
-/* HOW TO USE 
+/* HOW TO USE
    Plug this code below into your submenu sidebar and set the theme location to use the menu you want to reference. This code checks whether the page is a subpage.
    If page is a subpage it echos the children menu items of it. If page is not it then echos the top level pages of the menu.
 
-<?php if(check_is_subpage() == false){ ?>         
+<?php if(check_is_subpage() == false){ ?>
     <h3><?php bloginfo('name'); ?></h3>
     <div class="submenu-widget">
         <?php wp_nav_menu(array('theme_location' => 'main-menu', 'container' => '', 'menu_class' => 'menu', 'menu_id' => '', 'depth' => 2)); ?>
@@ -259,7 +307,7 @@ add_filter('excerpt_more', 'new_excerpt_more');
 
 function alx_browser_body_class( $classes ) {
     global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
- 
+
     if($is_lynx) $classes[] = 'lynx';
     elseif($is_gecko) $classes[] = 'gecko';
     elseif($is_opera) $classes[] = 'opera';
@@ -286,9 +334,9 @@ function alx_browser_body_class( $classes ) {
         }
     }
     else $classes[] = 'unknown';
- 
+
     if( $is_iphone ) $classes[] = 'iphone';
- 
+
     return $classes;
 }
 add_filter( 'body_class', 'alx_browser_body_class' );
@@ -324,7 +372,7 @@ function printr($var){ echo '<pre>'; print_r($var); echo '</pre>'; };
 
 /* ========================================================================= */
 /* !REMOVE ADMIN TOOLBAR */
-/* ========================================================================= */
+/* ========================================================================= 
 
 show_admin_bar( false );
 function my_function_admin_bar(){
@@ -332,7 +380,7 @@ function my_function_admin_bar(){
 }
 add_filter('show_admin_bar' , 'my_function_admin_bar');
 add_theme_support('admin-bar', array('callback' => '__return_false'));
-
+*/
 
 /* ========================================================================= */
 /* !YOAST ANALYZE CUSTOM FIELDS - Make Yoast Scan Our Custom Fields */
@@ -364,7 +412,7 @@ if ( is_admin() ) {
 function jrd_paginate() {
 	global $wp_query, $wp_rewrite;
 	$wp_query->query_vars['paged'] > 1 ? $current = $wp_query->query_vars['paged'] : $current = 1;
-	
+
 	$pagination = array(
 		'base' => @add_query_arg('page','%#%'),
 		'format' => '',
@@ -377,19 +425,19 @@ function jrd_paginate() {
 		'next_text' => '',
 		'prev_text' => ''
 		);
-	
+
 	if( $wp_rewrite->using_permalinks() )
 		$pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg( 's', get_pagenum_link( 1 ) ) ) . 'page/%#%/', 'paged' );
-	
+
 	if( !empty($wp_query->query_vars['s']) )
 		$pagination['add_args'] = array( 's' => urlencode(get_query_var( 's' )) );
-	
+
 	if($wp_query->query_vars['posts_per_page'] < $wp_query->found_posts){
 
 	    echo '<div id="search-nav">';
         echo paginate_links( $pagination );
         echo '</div>';
-	
+
 	}
 }
 */
@@ -399,14 +447,14 @@ function jrd_paginate() {
 /* !SHORTCUT CODES */
 /* ========================================================================= */
 /*
-function morelink($atts, $content = null) {  
-    extract(shortcode_atts(array(  
+function morelink($atts, $content = null) {
+    extract(shortcode_atts(array(
         "link" => '',
         "target" => ''
-    ), $atts));  
-    return '<a href="'.$link.'" class="button btn-read-more" target="'.$target.'">'.$content.'</a>';  
-}  
-add_shortcode('button', 'morelink'); 
+    ), $atts));
+    return '<a href="'.$link.'" class="button btn-read-more" target="'.$target.'">'.$content.'</a>';
+}
+add_shortcode('button', 'morelink');
 */
 
 
@@ -464,6 +512,86 @@ add_filter('the_posts', 'show_future_posts');
 /* ----- Get File Extension (ex: PDF, DOC) ----- */
 /*
 function jrd_get_file_ext($file_url){
-	return pathinfo($file_url, PATHINFO_EXTENSION); 
+	return pathinfo($file_url, PATHINFO_EXTENSION);
 }
 */
+
+/* ========================================================================= */
+/* !MULTI-SITE HELPERS */
+/* ========================================================================= */
+/*
+ * Return an identifier based on the current site.
+ */
+function get_site_identifier(){
+  global $blog_id;
+  switch($blog_id){
+    case 1:
+      return 'sullivan';
+    case 2:
+      return 'express';
+    case 3:
+      return 'bathworks';
+  }
+  return null;
+}
+
+
+/*
+ * Return an image URL from an ACF image field that returns an ID, at a registered size
+ */
+function get_acf_image($field_or_id,$size=null){
+  if (is_numeric($field_or_id)){
+    $image_id = $field_or_id;
+  }else{
+    $image_id = get_field($field_or_id);
+  }
+  if (empty($image_id)) return;
+  $image = wp_get_attachment_image_src( $image_id, $size );
+  return @$image[0];
+}
+
+/*
+ * Return the alt text of an ACF image
+ */
+function get_acf_image_alt($field_or_id){
+  if (is_numeric($field_or_id)){
+    $image_id = $field_or_id;
+  }else{
+    $image_id = get_field($field_or_id);
+  }
+  if (empty($image_id)) return;
+  return htmlentities(get_post_meta($image_id, '_wp_attachment_image_alt', true));
+}
+
+/*
+ * Determine whether we are on the primary landing page (for all sites)
+ */
+function is_primary_landing_page(){
+  return get_current_blog_id() == get_site_id() && is_front_page();
+}
+
+/* ========================================================================= */
+/* !GEOCODING */
+/* If a user doesn't provide lat/lng coordinates, attempt to retrieve based on address
+/* ========================================================================= */
+function geocode_address($address){
+  $address = urlencode($address);
+  $url = "http://maps.google.com/maps/api/geocode/json?address=$address&sensor=false";
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  $response = curl_exec($ch);
+  curl_close($ch);
+  $response_a = json_decode($response);
+  if (empty($response_a) || empty($response_a->results)){
+    return false;
+  }
+  $lat = $response_a->results[0]->geometry->location->lat;
+  $long = $response_a->results[0]->geometry->location->lng;
+  $result = array(
+    'latitude'=>$lat,
+    'longitude'=>$long
+  );
+  return $result;
+}
+
