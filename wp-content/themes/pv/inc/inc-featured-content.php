@@ -1,5 +1,8 @@
-<?php if (have_rows('slides')){ ?>
-<section id="training-wrapper">
+<?php
+global $blog_id; $basImg = get_field('featured_content_background', 'options');
+if (have_rows('slides')){ ?>
+
+<section id="training-wrapper" <?php if($blog_id == 2) { echo 'style="background-image: url('.$basImg['url'].'); background-size: cover;"'; } ?>>
   <div class="wrap-larg">
       <div class="bg-wrapper hidden-s"><div class="inner-wrap"><div class="circle-bg"></div></div></div>
 
@@ -13,7 +16,7 @@
                      $image_alt = get_acf_image_alt(get_sub_field('image'));
                      $alt = empty($image_alt) ? get_sub_field('title') : $image_alt;
                      ?>
-                      <img src="<?php echo get_acf_image(get_sub_field('image'),'featured-content-thumb'); ?>" width="703" height="586" alt="<?php echo htmlentities($alt) ?>" />
+                      <img src="<?php echo get_acf_image(get_sub_field('image'),'featured-content-thumb'); ?>"  alt="<?php echo htmlentities($alt) ?>" />
                     </div><!--right-->
                     <div class="pull-left box-two">
                       <h3><?php echo get_sub_field('category') ?></h3>

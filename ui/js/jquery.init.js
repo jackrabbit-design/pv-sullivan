@@ -5,6 +5,8 @@
 jQuery(function($){
 
 
+new WOW().init();
+
     // PARALLAX
 /*
     $(document).scroll(function(){

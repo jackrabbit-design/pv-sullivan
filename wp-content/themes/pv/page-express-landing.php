@@ -35,40 +35,47 @@ get_header();
         	<h2><?php echo get_field('get_started_heading'); ?></h2>
         	<ul id="sample-setup">
             	<li>
-                	<div class="image-wrap">
+                	<div class="image-wrap wow fadeInDown"> 
                     	<img src="<?php bloginfo('url'); ?>/ui/images/pv-express-delivary.png" width="274" height="230" alt=""/>
                     </div>
+                     <div class="wow fadeInUp"  >
                     <span>
                     	1
                     </span>
                     <h3>DELIVERY</h3>
+                </div>
                 </li>
-                <li>
-                	<div class="image-wrap">
+                <li><div class="image-wrap wow fadeInDown" data-wow-delay=".5s"> 
                     	<img src="<?php bloginfo('url'); ?>/ui/images/pv-express-cust.png" width="251" height="352" alt=""/>
                     </div>
+                     <div class="wow fadeInUp" data-wow-delay=".5s">
                     <span>
                     	2
                     </span>
                     <h3>CUSTOMIZATION</h3>
+                </div>
                 </li>
                 <li>
-                	<div class="image-wrap">
+                	<div class="image-wrap wow fadeInDown" data-wow-delay="1s">
                     	<img src="<?php bloginfo('url'); ?>/ui/images/pv-express-training.png" width="244" height="292" alt="" />
                     </div>
-                    <span>
-                    	3
-                    </span>
-                    <h3>TRAINING</h3>
+                    <div class="wow fadeInUp" data-wow-delay="1s">
+	                    <span>
+	                    	3
+	                    </span>
+	                    <h3>TRAINING</h3>
+                    <div>
                 </li>
                 <li>
-                	<div class="image-wrap">
+                	<div class="image-wrap wow fadeInDown" data-wow-delay="1.5s">
                     	<img src="<?php bloginfo('url'); ?>/ui/images/pv-express-imple.png" width="237" height="307" alt="" />
                     </div>
-                    <span>
-                    	4
-                    </span>
-                    <h3>IMPLEMENTATION</h3>
+                     <div class="wow fadeInUp" data-wow-delay="1.5s">
+	                    <span>
+	                    	4
+	                    </span>
+	                    <h3>IMPLEMENTATION</h3>
+                     <div>
                 </li>
             </ul>
 

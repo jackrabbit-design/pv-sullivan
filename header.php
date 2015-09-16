@@ -34,9 +34,6 @@
     <title><?php wp_title(); ?></title>
     <link type="image/x-icon" rel="shortcut icon" href="favicon.ico" />
 	<?php wp_head(); ?>
-	<?php global $blog_id; if($blog_id == 2) { ?>
-	<link type="text/css" rel="stylesheet" href="/ui/css/express.css"/>
-	<?php } ?>
 </head>
 
 
