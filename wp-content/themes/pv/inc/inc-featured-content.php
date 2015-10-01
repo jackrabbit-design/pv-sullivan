@@ -2,7 +2,7 @@
 global $blog_id; $basImg = get_field('featured_content_background', 'options');
 if (have_rows('slides')){ ?>
 
-<section id="training-wrapper" <?php if($blog_id == 2) { echo 'style="background-image: url('.$basImg['url'].'); background-size: cover;"'; } ?>>
+<section id="training-wrapper" <?php //if($blog_id == 2) { echo 'style="background-image: url('.$basImg['url'].'); background-size: cover;"'; } ?>>
   <div class="wrap-larg">
       <div class="bg-wrapper hidden-s"><div class="inner-wrap"><div class="circle-bg"></div></div></div>
 
@@ -21,7 +21,7 @@ if (have_rows('slides')){ ?>
                     <div class="pull-left box-two">
                       <h3><?php echo get_sub_field('category') ?></h3>
                         <h2><a href="<?php echo get_sub_field('call_to_action_url')?>"><?php echo get_sub_field('title') ?></a></h2>
-                        <p><?php echo get_sub_field('text_content'); ?></p>
+                        <?php echo get_sub_field('text_content'); ?>
                         <a href="<?php echo get_sub_field('call_to_action_url')?>" class="btn green-btn"><?php echo get_sub_field('call_to_action_label')?></a>
                     </div><!--left-->
                 </div>

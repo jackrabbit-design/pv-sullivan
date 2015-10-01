@@ -35,7 +35,7 @@ get_header();
         	<h2><?php echo get_field('get_started_heading'); ?></h2>
         	<ul id="sample-setup">
             	<li>
-                	<div class="image-wrap wow fadeInDown"> 
+                	<div class="image-wrap wow fadeInUp"> 
                     	<img src="<?php bloginfo('url'); ?>/ui/images/pv-express-delivary.png" width="274" height="230" alt=""/>
                     </div>
                      <div class="wow fadeInUp"  >
@@ -45,10 +45,10 @@ get_header();
                     <h3>DELIVERY</h3>
                 </div>
                 </li>
-                <li><div class="image-wrap wow fadeInDown" data-wow-delay=".5s"> 
+                <li><div class="image-wrap wow fadeInUp" data-wow-delay=".25s"> 
                     	<img src="<?php bloginfo('url'); ?>/ui/images/pv-express-cust.png" width="251" height="352" alt=""/>
                     </div>
-                     <div class="wow fadeInUp" data-wow-delay=".5s">
+                     <div class="wow fadeInUp" data-wow-delay=".25s">
                     <span>
                     	2
                     </span>
@@ -56,10 +56,10 @@ get_header();
                 </div>
                 </li>
                 <li>
-                	<div class="image-wrap wow fadeInDown" data-wow-delay="1s">
+                	<div class="image-wrap wow fadeInUp" data-wow-delay=".5s">
                     	<img src="<?php bloginfo('url'); ?>/ui/images/pv-express-training.png" width="244" height="292" alt="" />
                     </div>
-                    <div class="wow fadeInUp" data-wow-delay="1s">
+                    <div class="wow fadeInUp" data-wow-delay=".5s">
 	                    <span>
 	                    	3
 	                    </span>
@@ -67,10 +67,10 @@ get_header();
                     <div>
                 </li>
                 <li>
-                	<div class="image-wrap wow fadeInDown" data-wow-delay="1.5s">
+                	<div class="image-wrap wow fadeInUp" data-wow-delay=".75s">
                     	<img src="<?php bloginfo('url'); ?>/ui/images/pv-express-imple.png" width="237" height="307" alt="" />
                     </div>
-                     <div class="wow fadeInUp" data-wow-delay="1.5s">
+                     <div class="wow fadeInUp" data-wow-delay=".75s">
 	                    <span>
 	                    	4
 	                    </span>
