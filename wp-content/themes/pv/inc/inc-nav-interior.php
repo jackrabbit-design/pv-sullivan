@@ -6,7 +6,13 @@
           wp_nav_menu(array('theme_location'=>'top-menu', 'menu' => 'Top Menu', 'container' => 'nav', 'container_class'=> 'top-nav pull-right hidden-s', 'container_id'=> '', 'menu_class'=> '', 'menu_id'=>'')); ?>
 
             <h1 id="logo" class="pull-left">
+            
+            <?php if(get_current_blog_id() == 1){ ?>
+				<a title="<?php bloginfo('name'); ?>" href="<?php echo get_permalink(71); ?>">
+			<?php } else { ?>
               <a title="<?php bloginfo('name'); ?>" href="<?php bloginfo('url'); ?>">
+			<?php } ?>
+
                 <img src="<?php $img_arr = get_field('logo', 'options'); echo get_acf_image($img_arr['id'],'logo'); ?>" alt="<?php bloginfo('name'); ?>"/>
               </a>
             </h1>

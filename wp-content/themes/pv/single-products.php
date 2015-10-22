@@ -11,24 +11,28 @@
                 <div class="pull-right main-right">
                     <?php the_content(); ?>
                 </div>
-            </div><!--pg-top-->           
+            </div><!--pg-top-->
         </div>
     </section>
 
     <?php if(have_rows('product_page_options')) : while(have_rows('product_page_options')) : the_row(); ?>
-		
-<?php if(get_row_layout() == 'product_carousel') { ?> 
+
+<?php if(get_row_layout() == 'product_carousel') { ?>
+  <?php if (have_rows('carousel_images')){ ?>
     <section id="product-detail" class="pg-module">
         <ul id="product-carousel">
 
+          <?php while(have_rows('carousel_images')){ the_row(); ?>
             <li>
-                <img src="ui/images/product-d-1.jpg" width="401" height="460" alt="" />
-                <h5>ZUCHETTI</h5>
-                <span>Simply Beautiful</span>
+                <img src="<?php echo get_acf_image(get_sub_field('product_image'),'product-thumbnail')?>" alt="<?php echo get_acf_image_alt(get_sub_field('product_image'))?>" />
+                <h5><?php echo get_sub_field('product_name');?></h5>
+                <span><?php echo get_sub_field('product_model_name');?></span>
             </li>
-            
+          <?php } ?>
+
         </ul>
     </section>
+  <?php } ?>
     <?php } elseif(get_row_layout() == 'page_content') { ?>
     <section class="pg-module">
     	<div class="wrap single-pg-content">
@@ -43,14 +47,14 @@
                     </div> <!--pg-content-->
 
                     <?php } ?>
-                    
+
 
 				<?php if(have_rows('brands')) : ?>
                     <div class="brands">
                     	<h4>BRANDS</h4>
-                       
+
                         <ul>
-                        	<?php while(have_rows('brands')) : the_row(); 
+                        	<?php while(have_rows('brands')) : the_row();
                         	 	if($img = get_sub_field('brand_logo')) {
                         	?>
                         		<li>
@@ -61,10 +65,10 @@
                        		<?php } endwhile; ?>
                         </ul>
                     </div><!--brands-->
-                    
+
                     <div class="pg-content">
                     	<ul>
-                    		<?php while(have_rows('brands')) : the_row(); 
+                    		<?php while(have_rows('brands')) : the_row();
                     		if(!get_sub_field('brand_logo')) {
                     		?>
                             <li>

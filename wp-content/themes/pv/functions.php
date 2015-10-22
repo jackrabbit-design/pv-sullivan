@@ -59,6 +59,8 @@ add_image_size( 'testimonial-thumb', 280, 115, true );
 add_image_size( 'express-get-started-bg', 1800, 1080, true );
 add_image_size( 'express-testimonial-bg', 1800, 442, true );
 add_image_size( 'interior-left-sidebar', 555, 396, true );
+add_image_size( 'product-thumbnail', 401, 460, true);
+add_image_size( 'product-landing-thumbnail', 264, 200, true);
 
 /* Declare Nav Menu Areas */
 if ( function_exists( 'register_nav_menus' ) ) {
@@ -372,7 +374,7 @@ function printr($var){ echo '<pre>'; print_r($var); echo '</pre>'; };
 
 /* ========================================================================= */
 /* !REMOVE ADMIN TOOLBAR */
-/* ========================================================================= 
+/* =========================================================================
 
 show_admin_bar( false );
 function my_function_admin_bar(){

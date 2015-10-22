@@ -1,4 +1,4 @@
-/* ========================================================================= */
+ /* ========================================================================= */
 /* !RESETS AND DEFAULTS */
 /* ========================================================================= */
 html, body, div, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, img, ins, kbd, q, samp, var, hr, acronym, dl, dt, dd, ol, ul, li, pre, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video { border: 0; outline: 0; font-style: normal; font-weight: 400; font-size: 100%; vertical-align: baseline; margin: 0; padding: 0; -webkit-text-size-adjust: 100%; }
@@ -630,6 +630,7 @@ color: #fff;*/ }
 /*Product Page*/
 #products { font-size: 0; margin-left: -1%; }
 #products li { display: inline-block; width: 24%; margin: 0 0 0 1%; font-size: 12px; vertical-align: top; }
+#products.six-across li{width: 16%;}
 #products a { display: block; }
 #products a:hover h3 { color: #373835; }
 #products a:hover .hover-box { visibility: visible; opacity: 1; }
