@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Template Name: General Interior
+ * Template Name: How it Works - Express Only
  */
 
 get_header();
@@ -16,10 +16,12 @@ get_template_part("inc/inc-page-banner");
  */
 get_template_part("inc/inc-title-and-content");
 
+get_template_part("inc/inc-our-process");
+
 /*
  * Flexible content modules
  */
+ 
 get_template_part("inc/inc-flex-content");
-?>
 
-<?php get_footer(); ?>
+get_footer(); ?>

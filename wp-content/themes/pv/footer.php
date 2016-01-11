@@ -38,7 +38,7 @@ if (is_primary_landing_page()){
                               <?php if($icon == 'twitter') { ?>
                               <i class="social-twitter"></i>
                             <?php } elseif($icon == 'facebook') { ?>
-                            <i class="social-youtube"></i>
+                            <i class="social-facebook"></i>
                               <?php } ?>
                               </a>
                       <?php
@@ -50,9 +50,9 @@ if (is_primary_landing_page()){
                       }
                       ?>
                     <ul id="f-tab-btn" class="pull-left">
-                        <li><a href="#f-tab1" class="<?php echo get_current_blog_id()==1?"active":""?>"><img src="<?php bloginfo('url'); ?>/ui/images/footer-logo-1.png" width="141" height="84" alt="<?php echo get_multisite_bloginfo(get_site_id('sullivan'),'name')?>"></a></li>
-                        <li><a href="#f-tab3" class="<?php echo get_current_blog_id()==3?"active":""?>"><img src="<?php bloginfo('url'); ?>/ui/images/pv-bath-logo.png" width="141" height="84" alt="<?php echo get_multisite_bloginfo(get_site_id('bathworks'),'name')?>"></a></li>
-                        <li><a href="#f-tab2" class="<?php echo get_current_blog_id()==2?"active":""?>"><img src="<?php bloginfo('url'); ?>/ui/images/pv-express-logo.png" width="141" height="84" alt="<?php echo get_multisite_bloginfo(get_site_id('express'),'name')?>"></a></li>
+                        <li><a href="#f-tab1" class="<?php echo get_current_blog_id()==1?"active current":""?>"><img src="<?php bloginfo('url'); ?>/ui/images/footer-logo-1.png" width="141" height="84" alt="<?php echo get_multisite_bloginfo(get_site_id('sullivan'),'name')?>"></a></li>
+                        <li><a href="#f-tab3" class="<?php echo get_current_blog_id()==3?"active current":""?>"><img src="<?php bloginfo('url'); ?>/ui/images/pv-bath-logo.png" width="141" height="84" alt="<?php echo get_multisite_bloginfo(get_site_id('bathworks'),'name')?>"></a></li>
+                        <li><a href="#f-tab2" class="<?php echo get_current_blog_id()==2?"active current":""?>"><img src="<?php bloginfo('url'); ?>/ui/images/pv-express-logo.png" width="141" height="84" alt="<?php echo get_multisite_bloginfo(get_site_id('express'),'name')?>"></a></li>
                     </ul>
                  </div>
             </div><!--f-tab-top-->
@@ -75,9 +75,11 @@ if (is_primary_landing_page()){
                               'echo'=>0),
                               $id);
                           // add 'Home' link to menu
+/*
                           $home_link = "<li><a href='".get_site_url($id)."'>HOME</a></li>";
                           $pos = strpos($menu_html,"<li ");
                           $menu_html = substr_replace($menu_html,$home_link,$pos,0);
+*/
                           echo $menu_html;
                           ?>
                         </nav>

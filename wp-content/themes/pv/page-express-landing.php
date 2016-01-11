@@ -16,7 +16,12 @@ get_header();
                     	<div class="text-box">
                         	<h2><?php echo get_field('banner_heading'); ?></h2>
                             <p><?php echo get_field('banner_subtext'); ?></p>
+                            <?php if(get_field('video,_link,_or_nothing') == 'Video') { ?>
                             <a href="#video1" class="video-popup"><span></span> <?php echo get_field('landing_video_button_text'); ?></a>
+                            <?php } elseif(get_field('video,_link,_or_nothing') == 'Link') { ?>
+                            <a href="<?php the_field('landing_page_link'); ?>"><?php echo get_field('landing_page_link_text'); ?></a>
+                            <?php } ?>
+                            <?php //<a href="#video1" class="video-popup"><span></span> <?php echo get_field('landing_video_button_text'); </a> ?> 
                         </div>
                     </div>
                 </div>
@@ -30,7 +35,7 @@ get_header();
         </div>
     </div>
 
-	<section id="sample-setup-wrapper" style="background-image:url(<?php echo get_acf_image('get_started_background_image','express-get-started-bg')?>" alt="<?php echo get_acf_image_alt('get_started_background_image')?>">
+	<section id="sample-setup-wrapper" style="background-image:url(<?php echo get_acf_image('get_started_background_image','express-get-started-bg')?>);" alt="<?php echo get_acf_image_alt('get_started_background_image')?>">
     	<div class="wrap">
         	<h2><?php echo get_field('get_started_heading'); ?></h2>
         	<ul id="sample-setup">
@@ -83,23 +88,33 @@ get_header();
         </div>
     </section>
 
-    <section id="slider2-wrap" style="background-image:url(<?php echo get_acf_image('testimonial_background','express-testimonial-bg')?>" title="<?php echo htmlentities(get_acf_image_alt('testimonial_background'))?>">
+    <section id="slider2-wrap" style="background-image:url(<?php echo get_acf_image('testimonial_background','express-testimonial-bg')?>);" title="<?php echo htmlentities(get_acf_image_alt('testimonial_background'))?>">
     	<div class="wrap-larg">
         	<h2><?php echo get_field('testimonial_heading');?></h2>
 
           <?php if (have_rows('testimonials')){ ?>
             <ul id="slider2">
-              <?php while (have_rows('testimonials')){ the_row(); ?>
+              <?php while (have_rows('testimonials')){ the_row(); $ct = get_sub_field('content_or_testimonial'); ?>
             	<li>
                 	<div class="clearfix box-wrapper">
                     	<div class="left-box pull-left">
                         	<img src="<?php echo get_acf_image(get_sub_field('image'),'testimonial-thumb')?>" height="115" width="280" alt="<?php echo get_acf_image_alt(get_sub_field('image'))?>" />
                         </div>
                         <div class="right-box pull-right">
-                        	<blockquote>
-                            	<p><?php echo get_sub_field('quote')?></p>
+                            <?php if($ct == 'Testimonail') { ?>
+                            <blockquote>
+                                <p><?php echo get_sub_field('quote')?></p>
                                 <h5><?php echo get_sub_field('attribution'); ?></h5>
                             </blockquote>
+                            <?php } elseif($ct == 'Content') { ?>
+                        	<div class="content">
+                             <h3><?php the_sub_field('content_title'); ?></h3>  
+                             <p><?php the_sub_field('content'); ?></p>
+                             <?php if(get_sub_field('content_link') and get_sub_field('content_url')) { ?>
+                             <a class="btn white-btn" href="<?php the_sub_field('content_url'); ?>"><?php the_sub_field('content_link'); ?></a>
+                             <?php } ?>
+                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </li>

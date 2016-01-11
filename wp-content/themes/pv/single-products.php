@@ -1,4 +1,9 @@
-<?php get_header(); the_post(); ?>
+<?php
+	if($link = get_field('ecommerce_link')){
+		wp_redirect($link, 301);
+		exit();
+	}
+	get_header(); the_post(); ?>
 
 <?php get_template_part('inc/inc','page-banner'); ?>
 
@@ -18,7 +23,7 @@
     <?php if(have_rows('product_page_options')) : while(have_rows('product_page_options')) : the_row(); ?>
 
 <?php if(get_row_layout() == 'product_carousel') { ?>
-  <?php if (have_rows('carousel_images')){ ?>
+  <?php $slides = 0; if (have_rows('carousel_images')){ ?>
     <section id="product-detail" class="pg-module">
         <ul id="product-carousel">
 
@@ -28,10 +33,14 @@
                 <h5><?php echo get_sub_field('product_name');?></h5>
                 <span><?php echo get_sub_field('product_model_name');?></span>
             </li>
-          <?php } ?>
+          <?php $slides++; } $slidenum = $slides - 1;?>
 
         </ul>
     </section>
+<script>
+_productCarousel(<?php echo $slidenum; ?>);
+</script>
+
   <?php } ?>
     <?php } elseif(get_row_layout() == 'page_content') { ?>
     <section class="pg-module">
@@ -59,7 +68,7 @@
                         	?>
                         		<li>
                         			<?php if($link = get_sub_field('brand_link')) { ?><a href="<?php the_sub_field('brand_link'); ?>"><?php } ?>
-                        				<img src="<?php echo $img['size']['brand-logo']; ?>" width="125" height="27" alt="<?php the_sub_field('brand_name'); ?>"/>
+                        				<img src="<?php echo $img['sizes']['brand-logo']; ?>" width="125" height="27" alt="<?php the_sub_field('brand_name'); ?>"/>
                         			<?php if($link){ ?></a><?php } ?>
                         		</li>
                        		<?php } endwhile; ?>

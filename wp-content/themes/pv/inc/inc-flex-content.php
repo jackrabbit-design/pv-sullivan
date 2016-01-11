@@ -24,7 +24,13 @@
           case "slideshow_module":
             get_template_part("inc/inc-slideshow-module");
             break;
+          case "carousel";
+          	get_template_part('inc/inc-product-carousel');
+          	break;
         }
       }
     }
 ?>
+
+
+

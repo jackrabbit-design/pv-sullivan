@@ -47,7 +47,7 @@ add_image_size( 'banner-landing', 1800,700, true );
 add_image_size( 'sullivan-home-banner', 1140, 636, true);
 add_image_size( 'express-home-banner', 1140, 650, true );
 add_image_size( 'bathworks-home-banner', 1400, 700, true );
-add_image_size( 'manufacturer-logo', 200, 90, true );
+add_image_size( 'manufacturer-logo', 200, 9999, false );
 add_image_size( 'sullivan-site-ad', 312, 312, true);
 add_image_size( 'featured-content-thumb', 703, 703, true );
 add_image_size( 'call-to-action-banner-icon', 125, 125, true );

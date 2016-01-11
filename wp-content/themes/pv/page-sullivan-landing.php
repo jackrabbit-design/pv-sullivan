@@ -18,6 +18,9 @@ get_header();
                             	<h3><?php echo get_field('heading'); ?></h3>
                                 <p><?php echo get_field('subheading'); ?></p>
                                 <a href="<?php echo get_field('call_to_action_page') ?>" class="btn green-btn"><?php echo get_field('call_to_action_label') ?></a>
+                                <?php if(get_field('second_call_to_action_label') && get_field('second_call_to_action_page')) { ?>
+                                <a href="<?php echo get_field('second_call_to_action_page') ?>" class="btn white-btn"><?php echo get_field('second_call_to_action_label') ?></a>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

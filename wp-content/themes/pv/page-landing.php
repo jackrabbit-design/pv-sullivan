@@ -11,7 +11,7 @@ get_header();
     <section id="landing-banner">
     	<ul>
         	<li>
-            	<div class="banner-image" style="background-image:url(<?php echo get_acf_image('banner_image','banner-landing') ?>"  title="<?php echo htmlentities(get_acf_image_alt('banner_image'))?>" /></div>
+            	<div class="banner-image" style="background-image:url(<?php echo get_acf_image('banner_image','banner-landing') ?>);"  title="<?php echo htmlentities(get_acf_image_alt('banner_image'))?>" /></div>
                 <div class="banner-text">
                 	<div class="wrap">
                     	<div class="text-box">
