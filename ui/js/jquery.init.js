@@ -54,11 +54,11 @@ new WOW().init();
    _locationMaps();
 
     var highestBox = 0;
-        $('#landing-callout li').each(function(){  
-                if($(this).height() > highestBox){  
-                highestBox = $(this).height();  
+        $('#landing-callout li').each(function(){
+                if($(this).height() > highestBox){
+                highestBox = $(this).height();
         }
-    });    
+    });
     $('#landing-callout li').height(highestBox);
 
 });
@@ -349,7 +349,7 @@ function initialize_locations() {
   }
 ];
 	var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
-    var marker_icon = '/ui/images/map-maker.png';
+    var marker_icon = '/ui/images/map-maker-red.png';
 
     for(var i=0;i<map_locations.length;i++){
 

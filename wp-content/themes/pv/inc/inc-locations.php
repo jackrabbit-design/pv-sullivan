@@ -29,6 +29,7 @@ var map_locations = [];
       }
     ?>
       <div class="loc-box-wrapper">
+            <h4><?php echo get_sub_field('title'); ?></h4>
             <?php if (@$geocode_error){ ?>
             <strong>Could not create map. Admin, please check the address in the system.</strong>
             <?php }else{ ?>
@@ -36,9 +37,10 @@ var map_locations = [];
 
               </div>
             <?php } ?>
-            <h4><?php echo get_sub_field('title'); ?></h4>
+
             <ul class="loc-detail">
                 <li>
+                    <h5>Address</h5>
                     <p><?php echo get_sub_field('address'); ?></p>
                 </li>
                 <?php if (get_sub_field('hours')){ ?>
@@ -67,7 +69,11 @@ var map_locations = [];
         </div><!--loc-box-wrapper-->
         <?php if (empty($geocode_error)){ ?>
       <script type="text/javascript">
-        var loc = {map_id:<?php echo $i; ?>, latitude:"<?php echo $lat?>", longitude:"<?php echo $lng ?>"};
+        var loc = {
+            map_id:<?php echo $i; ?>,
+            latitude:"<?php echo $lat?>",
+            longitude:"<?php echo $lng ?>"
+        };
         map_locations.push(loc);
       </script>
         <?php } ?>
@@ -77,4 +83,3 @@ var map_locations = [];
 </section>
 
 <?php } ?>
-

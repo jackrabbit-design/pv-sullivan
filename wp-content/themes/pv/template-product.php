@@ -9,7 +9,9 @@ get_header(); the_post(); ?>
         	<div class="pg-top clearfix">
                 <div class="pull-left main-left">
                     <h2><?php the_title(); ?></h2>
-                    <a href="#" class="btn green-btn gray-hover">VISIT MYPLUMBINGSHOWROOM.COM</a>
+                    <?php if(get_field('sidebar_button_link') && get_field('sidebar_button_name')) { ?>
+                    	<a href="<?php the_field('sidebar_button_link'); ?>" class="btn green-btn gray-hover"><?php the_field('sidebar_button_name'); ?></a>
+                     <?php } ?>
                 </div>
                 <div class="pull-right main-right">
                     <?php the_content(); ?>

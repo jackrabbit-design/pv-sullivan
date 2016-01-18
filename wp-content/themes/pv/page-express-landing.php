@@ -97,10 +97,12 @@ get_header();
               <?php while (have_rows('testimonials')){ the_row(); $ct = get_sub_field('content_or_testimonial'); ?>
             	<li>
                 	<div class="clearfix box-wrapper">
+                	<?php if(get_sub_field('image')) { ?>
                     	<div class="left-box pull-left">
                         	<img src="<?php echo get_acf_image(get_sub_field('image'),'testimonial-thumb')?>" height="115" width="280" alt="<?php echo get_acf_image_alt(get_sub_field('image'))?>" />
                         </div>
-                        <div class="right-box pull-right">
+                    <?php } ?>
+                        <div class="<?php if(!get_sub_field('image')) { echo 'full-center '; } ?>right-box pull-right">
                             <?php if($ct == 'Testimonail') { ?>
                             <blockquote>
                                 <p><?php echo get_sub_field('quote')?></p>

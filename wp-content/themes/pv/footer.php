@@ -132,9 +132,9 @@ if (is_primary_landing_page()){
             </div>
         </div>
     </footer>
-    <?php wp_footer(); ?>
+
 
 <?php } ?>
-
+<?php wp_footer(); ?>
 </body>
 </html>
