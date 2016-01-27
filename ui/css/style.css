@@ -573,8 +573,8 @@ color: #fff;*/ }
 
 /*END PV Express home page*/
 /*Inner Pages def Styles*/
-.pg-module { margin: 55px 0 75px; }
-
+.pg-module { margin: 55px 0 55px; }
+.pg-module + .pg-module.brands-module{margin:-20px 0 55px;}
 .main-left, .side-bar { width: 35%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
 .main-right, .article { width: 60%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
@@ -620,7 +620,7 @@ color: #fff;*/ }
 /*-webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%);*/
 .single-pg-content .pg-body { height: 100%; position: relative; }
 .single-pg-content .pg-body .main-left { height: 100%; position: absolute; }
-
+.single-pg-content .pg-body .main-left.no-absolute{position: static;}
 #pg-slider-wrap { width: 100%; height: auto; background-color: rgba(55, 56, 52, 0.2); position: relative; }
 #pg-slider-wrap.top-shadow:before { width: 100%; height: 20px; top: 0; left: 0; position: absolute; content: ''; z-index: 9; box-shadow: inset 0 3px 2px -2px rgba(0, 0, 0, 0.3); -webkit-box-shadow: inset 0 3px 2px -2px rgba(0, 0, 0, 0.3); -moz-box-shadow: inset 0 3px 2px -2px rgba(0, 0, 0, 0.3); }
 
@@ -731,7 +731,8 @@ color: #fff;*/ }
 #product-carousel h5 { color: #64b04c; font-size: 14px; font-weight: 600; line-height: 14px; margin-bottom: 8px; text-transform: uppercase; }
 #product-carousel span { color: #373835; font-size: 18px; font-weight: 300; line-height: 24px; }
 
-.brands { width: 100%; display: inline-block; margin-top: 60px; }
+.brands { width: 100%; display: inline-block; }
+/*margin-top: 60px; */
 .brands h4 { color: #64b04c; font-size: 16px; font-weight: 700; line-height: 16px; letter-spacing: 1.07px; padding-bottom: 16px; border-bottom: 1px solid #d8d8d8; margin-bottom: 10px; }
 .brands ul { display: block; font-size: 0; margin-bottom: 30px; }
 .brands ul li { font-size: 12px; width: 33%; text-align: left; height: 70px; line-height: 70px; display: inline-block; }

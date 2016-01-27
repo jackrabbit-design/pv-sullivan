@@ -43,7 +43,7 @@ _productCarousel(<?php echo $slidenum; ?>);
 
   <?php } ?>
     <?php } elseif(get_row_layout() == 'page_content') { ?>
-    <section class="pg-module">
+    <section class="pg-module <?php if(have_rows('brands')) {echo 'brands-module'; } ?>">
     	<div class="wrap single-pg-content">
         	<div class="pg-body clearfix">
             	<div class="pull-left main-left">

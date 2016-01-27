@@ -52,7 +52,7 @@
   ?>
 
 
-<body class="<?php echo $body_class; ?>">
+<body <?php body_class(); //echo $body_class; ?>>
     <!--[if lte IE 7]><iframe src="unsupported.html" frameborder="0" scrolling="no" id="no_ie6"></iframe><![endif]-->
 
 

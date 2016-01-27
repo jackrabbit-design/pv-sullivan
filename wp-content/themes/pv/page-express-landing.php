@@ -21,7 +21,7 @@ get_header();
                             <?php } elseif(get_field('video,_link,_or_nothing') == 'Link') { ?>
                             <a href="<?php the_field('landing_page_link'); ?>"><?php echo get_field('landing_page_link_text'); ?></a>
                             <?php } ?>
-                            <?php //<a href="#video1" class="video-popup"><span></span> <?php echo get_field('landing_video_button_text'); </a> ?> 
+                            <?php //<a href="#video1" class="video-popup"><span></span> <?php echo get_field('landing_video_button_text'); </a> ?>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@ get_header();
         	<h2><?php echo get_field('get_started_heading'); ?></h2>
         	<ul id="sample-setup">
             	<li>
-                	<div class="image-wrap wow fadeInUp"> 
+                	<div class="image-wrap wow fadeInUp">
                     	<img src="<?php bloginfo('url'); ?>/ui/images/pv-express-delivary.png" width="274" height="230" alt=""/>
                     </div>
                      <div class="wow fadeInUp"  >
@@ -50,7 +50,7 @@ get_header();
                     <h3>DELIVERY</h3>
                 </div>
                 </li>
-                <li><div class="image-wrap wow fadeInUp" data-wow-delay=".25s"> 
+                <li><div class="image-wrap wow fadeInUp" data-wow-delay=".25s">
                     	<img src="<?php bloginfo('url'); ?>/ui/images/pv-express-cust.png" width="251" height="352" alt=""/>
                     </div>
                      <div class="wow fadeInUp" data-wow-delay=".25s">
@@ -84,7 +84,7 @@ get_header();
                 </li>
             </ul>
 
-            <a href="#" class="green-texture-btn"><?php echo get_field('get_started_button_label'); ?></a>
+            <a href="<?php the_field('get_started_button_url'); ?>" class="green-texture-btn"><?php echo get_field('get_started_button_label'); ?></a>
         </div>
     </section>
 
@@ -110,7 +110,7 @@ get_header();
                             </blockquote>
                             <?php } elseif($ct == 'Content') { ?>
                         	<div class="content">
-                             <h3><?php the_sub_field('content_title'); ?></h3>  
+                             <h3><?php the_sub_field('content_title'); ?></h3>
                              <p><?php the_sub_field('content'); ?></p>
                              <?php if(get_sub_field('content_link') and get_sub_field('content_url')) { ?>
                              <a class="btn white-btn" href="<?php the_sub_field('content_url'); ?>"><?php the_sub_field('content_link'); ?></a>
