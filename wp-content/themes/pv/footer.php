@@ -50,9 +50,9 @@ if (is_primary_landing_page()){
                       }
                       ?>
                     <ul id="f-tab-btn" class="pull-left">
-                        <li><a href="#f-tab1" class="<?php echo get_current_blog_id()==1?"active current":""?>"><img src="<?php bloginfo('url'); ?>/ui/images/footer-logo-1.png" width="141" height="84" alt="<?php echo get_multisite_bloginfo(get_site_id('sullivan'),'name')?>"></a></li>
-                        <li><a href="#f-tab3" class="<?php echo get_current_blog_id()==3?"active current":""?>"><img src="<?php bloginfo('url'); ?>/ui/images/pv-bath-logo.png" width="141" height="84" alt="<?php echo get_multisite_bloginfo(get_site_id('bathworks'),'name')?>"></a></li>
-                        <li><a href="#f-tab2" class="<?php echo get_current_blog_id()==2?"active current":""?>"><img src="<?php bloginfo('url'); ?>/ui/images/pv-express-logo.png" width="141" height="84" alt="<?php echo get_multisite_bloginfo(get_site_id('express'),'name')?>"></a></li>
+                        <li><a href="#f-tab1" data-url="<?php if(get_current_blog_id()==1) { bloginfo('url'); } ?>" class="<?php echo get_current_blog_id()==1?"active current":""?>"><img src="<?php bloginfo('url'); ?>/ui/images/footer-logo-1.png" width="141" height="84" alt="<?php echo get_multisite_bloginfo(get_site_id('sullivan'),'name')?>"></a></li>
+                        <li><a href="#f-tab3" data-url="<?php if(get_current_blog_id()==3) { bloginfo('url'); } ?>" class="<?php echo get_current_blog_id()==3?"active current":""?>"><img src="<?php bloginfo('url'); ?>/ui/images/pv-bath-logo.png" width="141" height="84" alt="<?php echo get_multisite_bloginfo(get_site_id('bathworks'),'name')?>"></a></li>
+                        <li><a href="#f-tab2" data-url="<?php if(get_current_blog_id()==2) { bloginfo('url'); } ?>" class="<?php echo get_current_blog_id()==2?"active current":""?>"><img src="<?php bloginfo('url'); ?>/ui/images/pv-express-logo.png" width="141" height="84" alt="<?php echo get_multisite_bloginfo(get_site_id('express'),'name')?>"></a></li>
                     </ul>
                  </div>
             </div><!--f-tab-top-->
@@ -110,11 +110,11 @@ if (is_primary_landing_page()){
             foreach($social_media_links as $link){
               if (in_array(get_current_blog_id(),$link['sites'])){
               ?>
-                <a href="<?php echo $link['link'] ?>" title="<?php echo $icon = $link['icon']; ?>">
+                <a target="_blank" href="<?php echo $link['link'] ?>" title="<?php echo $icon = $link['icon']; ?>">
                   <?php if($icon == 'twitter') { ?>
                   <i class="social-twitter"></i>
                 <?php } elseif($icon == 'facebook') { ?>
-                <i class="social-youtube"></i>
+                <i class="social-facebook"></i>
                   <?php } ?>
                   </a>
           <?php

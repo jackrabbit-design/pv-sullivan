@@ -1,5 +1,9 @@
+<?php $img = get_field('top_logo'); $imgLogo = get_field('top_logo_mobile'); ?>
+
 <header id="landing-header">
-  <div class="wrap clearfix landing-top-menu">
+    <a class="pull-left logo-mobile" href=""><img src="<?php echo $imgLogo['url']; ?>"/></a>
+    <div class="wrap clearfix landing-top-menu">
+      <a class="pull-left logo-desktop" href=""><img src="<?php echo $img['url']; ?>"/></a>
       <nav class="pull-right">
         <?php
         wp_nav_menu(array(

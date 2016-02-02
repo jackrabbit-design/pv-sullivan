@@ -4,7 +4,7 @@
 
 jQuery(function($){
 
-
+$('.contact-form').validate();
 new WOW().init();
 
     // PARALLAX
@@ -53,13 +53,7 @@ new WOW().init();
 	// _productCarousel();
    _locationMaps();
 
-    var highestBox = 0;
-        $('#landing-callout li').each(function(){
-                if($(this).height() > highestBox){
-                highestBox = $(this).height();
-        }
-    });
-    $('#landing-callout li').height(highestBox);
+
 
 });
 
@@ -198,14 +192,20 @@ function _footerTabs(){
 
 	$('#f-tab-btn li a').click( function(e){
 		e.preventDefault();
-		if( $(this).hasClass('active') ){
+		if($(this).hasClass('current') && $(this).hasClass('active')){
+    	     console.log('working?');
+            var url = $(this).data('url');
+            document.location.href = url;
+
+        } else if( $(this).hasClass('active') ){
 			//
+
 		} else {
 			$('#f-tab-btn li a').removeClass('active');
 			$(this).addClass('active');
-			$('.f-tab-content').hide('fast');
+			$('.f-tab-content').hide();
 			var currentTab = $(this).attr('href');
-			$(currentTab ).show('fast');
+			$(currentTab ).show();
 		}
 	});
 }
@@ -261,7 +261,15 @@ function _productCarousel(mySlides){
 		}
 	});
 }
-
+$(window).on('load', function(){
+    var highestBox = 0;
+        $('#landing-callout li').each(function(){
+                if($(this).height() > highestBox){
+                highestBox = $(this).height();
+        }
+    });
+    $('#landing-callout li').height(highestBox);
+});
 $(window).resize(function(){
 	if( $(window).innerWidth() > 767 ){
 		$("#mobile-nav-wrap").removeAttr("style");

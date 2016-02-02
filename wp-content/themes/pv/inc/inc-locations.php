@@ -33,9 +33,11 @@ var map_locations = [];
             <?php if (@$geocode_error){ ?>
             <strong>Could not create map. Admin, please check the address in the system.</strong>
             <?php }else{ ?>
+            <a href="<?php the_sub_field('google_map_link'); ?>" target="_blank">
               <div class="map-wrapper" id="map<?php echo $i; ?>">
 
               </div>
+          </a>
             <?php } ?>
 
             <ul class="loc-detail">
@@ -43,26 +45,25 @@ var map_locations = [];
                     <h5>Address</h5>
                     <p><?php echo get_sub_field('address'); ?></p>
                 </li>
+
+                <li>
+                    <h5>Contact</h5>
+                    <?php if (get_sub_field('phone')){ ?>
+                    <p><strong>Phone:</strong> <?php echo get_sub_field('phone'); ?></p>
+                    <?php } ?>
+                    <?php if (get_sub_field('fax')){ ?>
+
+                    <p><strong>Fax:</strong> <?php echo get_sub_field('fax'); ?></p>
+                    <?php } ?>
+                    <?php if (get_sub_field('email')){ ?>
+
+                    <p><strong>Email:</strong> <a href="<?php echo get_sub_field("email")?>"><?php echo get_sub_field("email")?></a></p>
+                    <?php } ?>
+                </li>
                 <?php if (get_sub_field('hours')){ ?>
                 <li>
                     <h5>Hours</h5>
                     <?php echo get_sub_field('hours'); ?>
-                </li>
-                <?php } ?>
-                <li>
-                    <?php if (get_sub_field('phone')){ ?>
-                    <h5>Phone</h5>
-                    <p><?php echo get_sub_field('phone'); ?></p>
-                    <?php } ?>
-                    <?php if (get_sub_field('fax')){ ?>
-                    <h5>Fax</h5>
-                    <p><?php echo get_sub_field('fax'); ?></p>
-                    <?php } ?>
-                </li>
-                <?php if (get_sub_field('email')){ ?>
-                <li>
-                    <h5>Email</h5>
-                    <p><a href="<?php echo get_sub_field("email")?>"><?php echo get_sub_field("email")?></a></p>
                 </li>
                 <?php } ?>
             </ul>

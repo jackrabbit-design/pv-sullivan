@@ -1,5 +1,5 @@
 <div class="pull-left left-box">
-    &copy; <?php echo get_multisite_field('copyright',null,'options')?>
+    &copy; <?php echo date('Y'); ?> <?php echo get_multisite_field('copyright',null,'options')?>
     <?php
     $links = get_multisite_field('footer_links',null,'options');
     if (!empty($links)){

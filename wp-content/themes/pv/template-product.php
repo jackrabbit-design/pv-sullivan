@@ -12,6 +12,14 @@ get_header(); the_post(); ?>
                     <?php if(get_field('sidebar_button_link') && get_field('sidebar_button_name')) { ?>
                     	<a href="<?php the_field('sidebar_button_link'); ?>" class="btn green-btn gray-hover"><?php the_field('sidebar_button_name'); ?></a>
                      <?php } ?>
+                    <?php if(have_rows('featured_brands')) : ?>
+                        <div class="featured-brands hidden-s">
+                            <h4>Featured Brands</h4>
+                            <?php while(have_rows('featured_brands')) : the_row(); $logo = get_sub_field('logo'); ?>
+                                <div class="brand"><img src="<?php echo $logo['sizes']['brand-logo']; ?>"/></div>
+                            <?php endwhile; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <div class="pull-right main-right">
                     <?php the_content(); ?>
