@@ -466,7 +466,7 @@ add_shortcode('button', 'morelink');
 /* !TINYMCE SELECT DROPDOWN CLASS SETUP CODES */
 /* ========================================================================= */
 
-/*
+/**/
 add_filter( 'mce_buttons_2', 'my_mce_buttons_2' );
 
 function my_mce_buttons_2( $buttons ) {
@@ -480,9 +480,9 @@ function my_mce_before_init( $settings ) {
 
     $style_formats = array(
     	array(
-    		'title' => 'Gray Box Button',
-    		'selector' => 'a',
-    		'classes' => 'box-link'
+    		'title' => 'Footnotes',
+    		'selector' => 'p',
+    		'classes' => 'footnotes'
         )
     );
 
@@ -491,7 +491,7 @@ function my_mce_before_init( $settings ) {
     return $settings;
 
 }
-*/
+
 
 
 /* ========================================================================= */
@@ -596,4 +596,3 @@ function geocode_address($address){
   );
   return $result;
 }
-

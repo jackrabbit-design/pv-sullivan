@@ -30,8 +30,8 @@
           <?php while(have_rows('carousel_images')){ the_row(); ?>
             <li>
                 <img src="<?php echo get_acf_image(get_sub_field('product_image'),'product-thumbnail')?>" alt="<?php echo get_acf_image_alt(get_sub_field('product_image'))?>" />
-                <h5><?php echo get_sub_field('product_name');?></h5>
-                <span><?php echo get_sub_field('product_model_name');?></span>
+                <?php /* Removed <h5><?php echo get_sub_field('product_name');?></h5>
+                <span><?php echo get_sub_field('product_model_name');?></span> */ ?>
             </li>
           <?php $slides++; } $slidenum = $slides - 1;?>
 

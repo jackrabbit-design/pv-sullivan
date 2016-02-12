@@ -15,7 +15,7 @@ get_header();
                 	<div class="wrap">
                     	<div class="text-box">
                         	<h2><?php echo get_field('banner_heading'); ?></h2>
-                            <p><?php echo get_field('banner_subtext'); ?></p>
+                            <?php echo get_field('banner_subtext'); ?>
                             <?php if(get_field('video,_link,_or_nothing') == 'Video') { ?>
                             <a href="#video1" class="video-popup"><span></span> <?php echo get_field('landing_video_button_text'); ?></a>
                             <?php } elseif(get_field('video,_link,_or_nothing') == 'Link') { ?>

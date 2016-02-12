@@ -5,7 +5,7 @@
         <?php
           // Top Menu Desktop
           wp_nav_menu(array('theme_location'=>'top-menu', 'menu' => 'Top Menu', 'container' => 'nav', 'container_class'=> 'top-nav pull-right hidden-s', 'container_id'=> '', 'menu_class'=> '', 'menu_id'=>'')); ?>
-<?php if($phone = get_field('phone_number', 'options')) { echo '<a class="phone" href="tel:'.$phone.'">'.$phone.'</a>'; } ?>
+<?php //if($phone = get_field('phone_number', 'options')) { echo '<a class="phone" href="tel:'.$phone.'">'.$phone.'</a>'; } ?>
             <h1 id="logo" class="pull-left">
 
             <?php if(get_current_blog_id() == 1){ ?>

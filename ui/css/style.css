@@ -228,6 +228,49 @@ body.landing-pg-wrapper { background: #f8f8f8; }
 
 .social-youtube2-round:before { content: "U"; }
 
+@font-face {
+  font-family: "pv";
+  src:url("../fonts/pv/pv.eot");
+  src:url("../fonts/pv/pv.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/pv/pv.woff") format("woff"),
+    url("../fonts/pv/pv.ttf") format("truetype"),
+    url("../fonts/pv/pv.svg#pv") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "pv" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "pv" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-houzz:before {
+  content: "\61";
+}
+
+
 /* != DEFAULT WORDPRESS STYLES = USE AS NEEDED = .wp-caption = .wp-caption-dd = .wpGallery = .shutter = .shutterset ==== */
 .aligncenter { display: block; margin: 25px auto; }
 
@@ -379,6 +422,7 @@ color: #fff;*/ }
 #training h2 a { color: #fff; }
 #training h2 a:hover { color: #64b04c; }
 #training p { color: #979797; font-size: 18px; font-weight: 300; line-height: 29px; margin-bottom: 40px; opacity: 0; padding-right: 80px; }
+#training p.footnotes{font-size: 14px;margin-top: -35px;}
 #training .btn { visibility: hidden; opacity: 0; }
 #training .slick-active h3 { -webkit-animation: fadein2 0.6s ease-out; -moz-animation: fadein2 0.6s ease-out; animation: fadein2 0.6s ease-out; opacity: 1; }
 #training .slick-active h2 { -webkit-animation: fadein2 0.6s ease-out; -moz-animation: fadein2 0.6s ease-out; animation: fadein2 0.6s ease-out; opacity: 1; }
@@ -409,6 +453,7 @@ color: #fff;*/ }
 #footer .f-right-nav ul li a:hover { color: #717171; }
 #footer .f-social { position: relative; top: 40px; }
 #footer .f-social a { width: 33px; height: 33px; border: 2px solid #64b04c; -moz-border-radius: 33px; -webkit-border-radius: 33px; border-radius: 33px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; text-align: center; line-height: 33px; font-size: 26px; color: #64b04c; position: relative; display: inline-block; margin-left: 6px; }
+#footer .f-social a .icon-houzz{font-size: 22px;}
 #footer .f-social a .social-youtube { font-size: 28px; }
 #footer .f-social a:hover { background-color: #717171; border: 2px solid #717171; color: #fff; }
 #footer .f-bottom-rwo .inner-wrap { border-top: 1px solid #d8d8d8; padding-top: 18px; color: #979797; font-size: 11px; font-weight: 400; line-height: 12px; }
@@ -527,6 +572,7 @@ color: #fff;*/ }
 #express-banner .text-box { width: 100%; display: inline-block; height: auto; display: inline-block; position: relative; top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); }
 #express-banner h2 { font-family: "veneer_two"; font-size: 84px; font-weight: 400; line-height: 103px; color: #fff; margin-bottom: 10px; text-transform: uppercase; }
 #express-banner p { text-shadow: 0 2px 21px rgba(0, 0, 0, 0.5); color: #fff; font-size: 27px; font-weight: 400; line-height: 30px; margin: 0 auto 25px; max-width: 840px; }
+#express-banner p.footnotes{font-size: 18px; margin: -8px auto 10px;}
 #express-banner a { font-size: 36px; font-weight: 400; display: inline-block; padding: 15px 18px; color: #fff; font-family: "veneer_two"; text-transform: uppercase; line-height: 36px; }
 #express-banner a:hover { background: url(../images/btn-green-bg.png) left top repeat; }
 #express-banner a span { display: inline-block; width: 38px; height: 38px; -moz-border-radius: 38px; -webkit-border-radius: 38px; border-radius: 38px; border: 2px solid #fff; vertical-align: middle; margin-right: 15px; text-align: center; font-size: 22px; text-transform: none; position: relative; line-height: 38px; }

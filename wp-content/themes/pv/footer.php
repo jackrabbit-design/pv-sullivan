@@ -34,13 +34,18 @@ if (is_primary_landing_page()){
                         <?php foreach($social_media_links as $link){
                           if (in_array(get_current_blog_id(),$link['sites'])){
                           ?>
-                            <a href="<?php echo $link['link'] ?>" title="<?php echo $icon = $link['icon']; ?>">
+                            <a target="_blank" href="<?php echo $link['link'] ?>" title="<?php echo $icon = $link['icon']; ?>">
                               <?php if($icon == 'twitter') { ?>
                               <i class="social-twitter"></i>
                             <?php } elseif($icon == 'facebook') { ?>
                             <i class="social-facebook"></i>
-                              <?php } ?>
-                              </a>
+                            <?php } elseif($icon == 'houzz') { ?>
+                            <i class="icon-houzz"></i>
+                        
+                            <?php } elseif($icon == 'pinterest') { ?>
+                            <i class="social-pinterest"></i>
+                            <?php } ?>
+                            </a>
                       <?php
                           }
                         }
